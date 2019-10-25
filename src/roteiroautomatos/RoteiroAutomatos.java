@@ -5,8 +5,12 @@ public class RoteiroAutomatos {
     public static void main(String[] args) {
         ExpressaoRegular ER = new ExpressaoRegular();
 
-        ER.confere(ER.DATA, "1/7/1996");
-        ER.confere(ER.VETOR, "vetor[indice5]");
+        ER.confere(ER.DESIGNADOR, "lista[5]");
+        ER.confere(ER.DESIGNADOR, "produto.nome");
+        ER.confere(ER.DESIGNADOR, "produto.livros[a].autor");
+        ER.confere(ER.DESIGNADOR, "lista[ponto.x]");
+        ER.confere(ER.DESIGNADOR, "produto.custo.x.a.b.d.ed.e");
+
     }
 
 }
