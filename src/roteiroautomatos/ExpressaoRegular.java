@@ -2,7 +2,7 @@ package roteiroautomatos;
 
 public class ExpressaoRegular {
 
-    public String BRANCO, BRANCOS, REAL, DIA, MES, DATA, DESIGNADOR, PONTO;
+    public String BRANCO, BRANCOS, REAL, DIA, MES, DATA, DESIGNADOR, PONTO, DECLARACAO_FUNCAO, PARAMETROS, RETORNO;
     public String DIGITO, DIGITOS, FRACAO;
     public String LETRA, LETRAS, QUANTIDADEPARDEA, VARIAVEL, INTEIRO, EXPONENCIAL, VETOR, INTERIOR_VETOR;
 
@@ -26,6 +26,11 @@ public class ExpressaoRegular {
         PONTO = ".?";
 
         DESIGNADOR = (VARIAVEL + PONTO + VARIAVEL) + "+(" + PONTO + VARIAVEL + ")*(\\[(" + DIGITO + "+|" + VARIAVEL + "(" + PONTO + "" + VARIAVEL + ")*)\\])*(" + PONTO + VARIAVEL + ")*";
+
+        PARAMETROS = "\\(" + LETRAS + "\\s" + VARIAVEL + "(\\,\\s" + LETRAS + "\\s" + VARIAVEL + ")*\\)";
+        DECLARACAO_FUNCAO = VARIAVEL + "\\s" + VARIAVEL + PARAMETROS + ";";
+
+        RETORNO = VARIAVEL + "\\(" + DIGITOS + "(\\," + DIGITOS + "|" + VARIAVEL + ")*\\);";
     }
 
     public void confere(String exp, String sentenca) {
