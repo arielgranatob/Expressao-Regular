@@ -32,9 +32,9 @@ public class ExpressaoRegular {
 
         TIPOS_RETORNOS = "int|float|char|double|boolean|" + VARIAVEL;
         DECLARACAO_VARIAVEL = TIPOS_RETORNOS + "\\s|" + VARIAVEL;
-        INTERIOR = "((" + VARIAVEL + ")|(" + DIGITOS + "))+";
-        
-        CHAMADA_FUNCAO = DECLARACAO_VARIAVEL + "\\(("+ INTERIOR +"+,*)*\\);";
+        INTERIOR = "(" + VARIAVEL + "|" + DIGITOS + ")";
+
+        CHAMADA_FUNCAO = DECLARACAO_VARIAVEL + "\\(((" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + "(,\\s(" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + ")*)\\);";
     }
 
     public void confere(String exp, String sentenca) {
