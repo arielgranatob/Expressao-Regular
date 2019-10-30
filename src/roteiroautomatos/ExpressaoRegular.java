@@ -3,8 +3,9 @@ package roteiroautomatos;
 public class ExpressaoRegular {
 
     public String BRANCO, BRANCOS, REAL, DIA, MES, DATA, DESIGNADOR, PONTO, DECLARACAO_FUNCAO, PARAMETROS, CHAMADA_FUNCAO, DECLARACAO_VARIAVEL, TIPOS_RETORNOS, INTERIOR;
-    public String DIGITO, DIGITOS, FRACAO;
+    public String DIGITO, DIGITOS, FRACAO, EXPRESSAO;
     public String LETRA, LETRAS, QUANTIDADEPARDEA, VARIAVEL, INTEIRO, EXPONENCIAL, VETOR, INTERIOR_VETOR;
+    public String TIPO_CONDICAO, CONDICAO, SIMBOLO_OPERADORES, CONDICOES;
 
     public ExpressaoRegular() {
 
@@ -30,11 +31,20 @@ public class ExpressaoRegular {
         PARAMETROS = "\\(" + LETRAS + "\\s" + VARIAVEL + "(\\,\\s" + LETRAS + "\\s" + VARIAVEL + ")*\\)";
         DECLARACAO_FUNCAO = VARIAVEL + "\\s" + VARIAVEL + PARAMETROS + ";";
 
-        TIPOS_RETORNOS = "int|float|char|double|boolean|" + VARIAVEL;
+        TIPOS_RETORNOS = "(int|float|char|double|boolean)" + VARIAVEL;
         DECLARACAO_VARIAVEL = TIPOS_RETORNOS + "\\s|" + VARIAVEL;
         INTERIOR = "(" + VARIAVEL + "|" + DIGITOS + ")";
 
-        CHAMADA_FUNCAO = DECLARACAO_VARIAVEL + "\\(((" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + "(,\\s(" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + ")*)\\);";
+        CHAMADA_FUNCAO = DECLARACAO_VARIAVEL + "\\(((" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + "(,\\s(" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + ")*)\\)";
+
+        TIPO_CONDICAO = "(if|while)";
+        SIMBOLO_OPERADORES = "(\\+|\\-|\\*|\\/)";
+        CONDICOES = "(<=|==|>=|!=|<|>)";
+
+        EXPRESSAO = "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + ")(" + SIMBOLO_OPERADORES + "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + "))+";
+
+        CONDICAO = TIPO_CONDICAO + "\\((" + DIGITOS + "|" + DESIGNADOR + ")" + CONDICOES + "(" + DIGITOS + "|" + DESIGNADOR + ")\\)";
+
     }
 
     public void confere(String exp, String sentenca) {
