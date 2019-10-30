@@ -37,13 +37,12 @@ public class ExpressaoRegular {
 
         CHAMADA_FUNCAO = DECLARACAO_VARIAVEL + "\\(((" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + "(,\\s(" + TIPOS_RETORNOS + "\\s)*" + INTERIOR + ")*)\\)";
 
-        TIPO_CONDICAO = "(if|while)";
         SIMBOLO_OPERADORES = "(\\+|\\-|\\*|\\/)";
+        EXPRESSAO = "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + ")(" + SIMBOLO_OPERADORES + "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + "))*";
+
+        TIPO_CONDICAO = "(if|while)";
         CONDICOES = "(<=|==|>=|!=|<|>)";
-
-        EXPRESSAO = "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + ")(" + SIMBOLO_OPERADORES + "(" + DIGITOS + "|" + DESIGNADOR + "|" + VARIAVEL + "|" + CHAMADA_FUNCAO + "))+";
-
-        CONDICAO = TIPO_CONDICAO + "\\((" + DIGITOS + "|" + DESIGNADOR + ")" + CONDICOES + "(" + DIGITOS + "|" + DESIGNADOR + ")\\)";
+        CONDICAO = TIPO_CONDICAO + "\\(!?\\((" + EXPRESSAO + ")\\)((" + CONDICOES + "\\((" + EXPRESSAO + "))\\)\\))?";
 
     }
 

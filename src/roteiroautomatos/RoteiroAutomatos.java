@@ -24,6 +24,8 @@ public class RoteiroAutomatos {
 //        ER.confere(ER.CHAMADA_FUNCAO, "soma(int a, 1b);");
 
         ER.confere(ER.EXPRESSAO, "i+1+soma(a, b)+vet[a]+1");
+        ER.confere(ER.CONDICAO, "if((valida(a))!=(10*5))");
+        ER.confere(ER.CONDICAO, "while(!(soma(a))");
 
     }
 
